@@ -13,8 +13,13 @@
                 <!-- <img src="{{item.data.thumbnail}}"> -->
             </ion-thumbnail>
             <h2>{{ item.name }}</h2>
+            <p>
+                <ion-icon name="md-eye">{{ item.views }}</ion-icon>&nbsp;&nbsp;
+                <ion-icon name="ios-body">{{ item.subscribers }}</ion-icon>&nbsp;&nbsp;
 
-            <button ion-button small item-right (click)="viewItem(item)"></button>
+            </p>
+
+            <button ion-button small item-right (click)="viewItem(item)">View</button>
 
         </ion-item>
     </ion-list>
