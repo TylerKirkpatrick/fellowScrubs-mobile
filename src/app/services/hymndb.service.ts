@@ -16,4 +16,9 @@ export class GamesService {
 		return this.http.get(this.baseUrl + '/games')
 		.map(res => res.json());
 	}
+
+	getPosts(game_endpoint, page_number) {
+		return this.http.get(this.baseUrl + '/games/' + game_endpoint + '/posts/' + page_number)
+		.map(res => res.json());
+	}
 }
