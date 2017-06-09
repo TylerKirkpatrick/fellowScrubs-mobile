@@ -18,6 +18,12 @@
 
                 </ion-item>
             </ion-list>
+
+            <button ion-button small item-right (click)="viewItem(post)">View</button>
+
         </ion-card-content>
     </ion-card>
+
+    <button *ngIf="currentPage > 1" ion-button small item-left (click)="goToPage(currentPage - 1)">Previous</button>
+    <button *ngIf="posts?.length > 0" ion-button small item-right (click)="goToPage(currentPage + 1)">Next</button>
 </ion-content>

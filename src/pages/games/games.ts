@@ -20,7 +20,6 @@ export class GamesPage {
 
   getGames() {
     this.gamesService.getGames().subscribe(res => {
-      console.log(JSON.stringify(res));
       this.items = res;
     });
   }

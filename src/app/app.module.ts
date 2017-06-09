@@ -9,6 +9,7 @@ import { GamesPage } from '../pages/games/games';
 import { SettingsPage } from '../pages/settings/settings';
 import { TabsPage } from '../pages/tabs/tabs';
 import { DetailsPage } from '../pages/details/details';
+import { PostPagePage } from '../pages/post-page/post-page';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -20,7 +21,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SettingsPage,
     GamesPage,
     TabsPage,
-    DetailsPage
+    DetailsPage,
+    PostPagePage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SettingsPage,
     GamesPage,
     TabsPage,
-    DetailsPage
+    DetailsPage,
+    PostPagePage
   ],
   providers: [
     StatusBar,
