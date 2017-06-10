@@ -7,9 +7,19 @@
 </ion-header>
 
 <ion-content padding>
-    <form>
-        <ion-input type="text" name="email" [(ngModel)]="email"></ion-input>
-        <ion-input type="password" name="password" [(ngModel)]="password"></ion-input>
-        <button ion-button (click)="login()">Login</button>
+    <form #FormLogin="ngForm" (ngSubmit)="login(FormLogin)">
+        <ion-item>
+            <ion-label floating>Username</ion-label>
+            <ion-input type="text" name="username" [(ngModel)]="FormLogin.username" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Password</ion-label>
+            <ion-input type="password" name="password" [(ngModel)]="FormLogin.password" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <button full ion-button [disabled]="!FormLogin.form.valid" type="submit">Login</button>
+        </ion-item>
     </form>
 </ion-content>
