@@ -2,15 +2,21 @@ import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { TabsPage } from '../tabs/tabs';
-import { RegisterPage } from '../register/register';
+import { LoginPage } from '../login/login';
+
+/*
+credit:
+https://auth0.com/blog/ionic-2-authentication-how-to-secure-your-mobile-app-with-jwt/
+*/
 
 @Component({
-  selector: 'login',
-  templateUrl: 'login.html'
+  selector: 'register',
+  templateUrl: 'register.html'
 })
-export class LoginPage {
+export class RegisterPage {
 
-	username:any;
+	email:any;
+  username: any;
 	password:any;
 
 	constructor(
@@ -19,26 +25,20 @@ export class LoginPage {
 		public alertCtrl: AlertController
 	) {}
 
-	login(FormLogin) {
-		this.auth.login(FormLogin.value).subscribe(data => {
+	Register(FormRegister) {
+		this.auth.register(FormRegister.value).subscribe(data => {
 			if(data.success == true) {
-				//console.log("setting username: ", FormLogin.username);
-				window.localStorage.setItem('username', FormLogin.username);
-				this.navCtrl.setRoot(TabsPage);
+				this.navCtrl.setRoot(LoginPage);
 			} else {
-				FormLogin.password = '';
+				FormRegister.password = '';
 				let alert = this.alertCtrl.create({
-					title: 'Login failed, try registering as a new user',
+					title: 'Register failed',
 					subTitle: data.message,
 					buttons: ['OK']
 				});
 				alert.present();
 			}
 		});
-	}
-
-	goToRegister() {
-		this.navCtrl.push(RegisterPage);
 	}
 
 }

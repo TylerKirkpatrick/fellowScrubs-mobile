@@ -24,13 +24,13 @@ export class AuthProvider {
   private() {
     let headers = new Headers();
     this.createAuthorizationHeader(headers);
-    return this.http.get(this.baseUrl+ '/authenticate', {
+    return this.http.get(this.baseUrl+ '/users/authenticate', {
       headers: headers
     }).map(res => res.json());
   }
 
   login(data) {
-    return this.http.post(this.baseUrl+'/register', data)
+    return this.http.post(this.baseUrl+'/users/authenticate', data)
     .map(this.extractData);
   }
 
@@ -53,6 +53,38 @@ export class AuthProvider {
     };
 
     return body || {};
+  }
+
+  register(data) {
+    return this.http.post(this.baseUrl+'/users/register', data)
+    .map(this.extractData);
+  }
+
+  getProfile() {
+    if(this.isLogged()) {
+      let headers = new Headers();
+      const token = window.localStorage.getItem('token');
+      headers.append('Authorization', token);
+      headers.append('Content-Type','application/json');
+      return this.http.get(`${this.baseUrl}/users/profile`, {headers: headers})
+        .map(res => res.json());
+
+    }
+
+  }
+
+  addComment(post, comment) {
+    
+  
+
+    let headers = new Headers();
+    const token = window.localStorage.getItem('token');
+    headers.append('Authorization', token);
+    headers.append('Content-Type','application/json');
+    return this.http.post(this.baseUrl + `/games/${post.game.game_endpoint}/posts/${post._id}/comments`, comment, {headers: headers})
+      .map(res => res.json());
+    
+
   }
 
 }

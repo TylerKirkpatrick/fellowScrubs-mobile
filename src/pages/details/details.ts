@@ -28,8 +28,6 @@ export class DetailsPage {
 
 	ViewSinglePage(post) {
 		this.gamesService.getSinglePost(post).subscribe(res => {
-			
-			console.log(res);
 			this.posts = res;
 		});
 	}

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
+import { MomentModule } from 'angular2-moment';
 
 import { AboutPage } from '../pages/about/about';
 import { GamesPage } from '../pages/games/games';
@@ -12,6 +13,8 @@ import { DetailsPage } from '../pages/details/details';
 import { PostPagePage } from '../pages/post-page/post-page';
 import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
+import { RegisterPage } from '../pages/register/register';
+import { ProfilePage } from '../pages/profile/profile';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -28,11 +31,14 @@ import { AuthProvider } from '../providers/auth/auth';
     DetailsPage,
     PostPagePage,
     LoginPage,
-    HomePage
+    HomePage,
+    RegisterPage,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    MomentModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -45,7 +51,9 @@ import { AuthProvider } from '../providers/auth/auth';
     DetailsPage,
     PostPagePage,
     LoginPage,
-    HomePage
+    HomePage,
+    RegisterPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,
