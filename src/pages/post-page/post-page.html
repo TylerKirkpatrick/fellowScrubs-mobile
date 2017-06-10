@@ -9,17 +9,27 @@
 <ion-content padding>
     <ion-card>
         <!-- <img src="http://www.freeiconspng.com/uploads/controller-icon-8.png" /> -->
-        <ion-card-content>
-            <ion-list>
-                <ion-item>
-                    <h2>{{ item.title }}</h2>
-                    <br>
-                    <p>{{ item.text }}</p>
 
-                </ion-item>
-            </ion-list>
+        <ion-card-header>
+            <h1>{{ item?.title }} </h1>
+        </ion-card-header>
+
+        <ion-card-content>
+
+            <p>{{ item?.text }}</p>
+
         </ion-card-content>
     </ion-card>
+
+    <ion-card *ngFor="let comment of item.comments">
+        <ion-card-content>
+            <ion-item>
+                <p>{{ comment?.text }}</p>
+                <ion-note>by {{ comment?.username }} </ion-note>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+
 
     <button ion-button small item-left (click)="reply()">Comment</button>
 </ion-content>

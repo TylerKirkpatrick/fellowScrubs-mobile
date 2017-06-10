@@ -10,9 +10,13 @@ import { SettingsPage } from '../pages/settings/settings';
 import { TabsPage } from '../pages/tabs/tabs';
 import { DetailsPage } from '../pages/details/details';
 import { PostPagePage } from '../pages/post-page/post-page';
+import { LoginPage } from '../pages/login/login';
+import { HomePage } from '../pages/home/home';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import {JwtHelper} from "angular2-jwt";
+import {Storage} from "@ionic/storage";
 
 @NgModule({
   declarations: [
@@ -22,7 +26,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     GamesPage,
     TabsPage,
     DetailsPage,
-    PostPagePage
+    PostPagePage,
+    LoginPage,
+    HomePage,
+    JwtHelper,
+    Storage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +45,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     GamesPage,
     TabsPage,
     DetailsPage,
-    PostPagePage
+    PostPagePage,
+    LoginPage,
+    HomePage
   ],
   providers: [
     StatusBar,

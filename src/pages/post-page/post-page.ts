@@ -7,8 +7,6 @@ import { GamesService } from '../../app/services/hymndb.service';
 })
 export class PostPagePage {
 	item: any;
-	posts: any;
-	currentPage: number;
 
 	constructor(public navCtrl: NavController, public params: NavParams, private gamesService: GamesService) {
 		this.item = params.get('item');
