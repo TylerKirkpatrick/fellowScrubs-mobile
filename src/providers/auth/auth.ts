@@ -74,17 +74,21 @@ export class AuthProvider {
   }
 
   addComment(post, comment) {
-    
-  
-
     let headers = new Headers();
     const token = window.localStorage.getItem('token');
     headers.append('Authorization', token);
     headers.append('Content-Type','application/json');
     return this.http.post(this.baseUrl + `/games/${post.game.game_endpoint}/posts/${post._id}/comments`, comment, {headers: headers})
       .map(res => res.json());
-    
+  }
 
+  addPost(post) {
+    let headers = new Headers();
+    const token = window.localStorage.getItem('token');
+    headers.append('Authorization', token);
+    headers.append('Content-Type','application/json');
+    return this.http.post(this.baseUrl + `/games/${post.game.game_endpoint}/posts`, post, {headers: headers})
+      .map(res => res.json());
   }
 
 }

@@ -7,6 +7,8 @@
 </ion-header>
 
 <ion-content padding>
+    <ion-spinner name="ios" *ngIf="!posts">
+    </ion-spinner>
     <ion-card *ngFor="let post of posts">
         <!-- <img src="http://www.freeiconspng.com/uploads/controller-icon-8.png" /> -->
         <ion-card-content>
@@ -25,6 +27,28 @@
     </ion-card>
 
 
+    <button style="float: left;" *ngIf="loggedIn && !showNewPostText && posts?.length > 0" ion-button small item-left (click)="toggleNewPost()">New Post</button>
+    <button style="float: left;" color="light" *ngIf="loggedIn && showNewPostText" ion-button small item-left (click)="toggleNewPost()">Cancel</button>
+
+    <br>
+
+    <form #FormPost="ngForm" *ngIf="showNewPostText" (ngSubmit)="addPost(FormPost)">
+        <ion-item>
+            <ion-label floating>Title</ion-label>
+            <ion-input type="text" name="title" [(ngModel)]="FormPost.title"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Text</ion-label>
+            <ion-input type="text" name="text" [(ngModel)]="FormPost.text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <button full ion-button [disabled]="!FormPost.form.valid" type="submit">Submit</button>
+        </ion-item>
+    </form>
+
+    <br>
     <button style="float: left;" *ngIf="currentPage > 1" ion-button small item-left (click)="goToPage(currentPage - 1)">Previous</button>
     <button style="float: right;" *ngIf="posts?.length > 0" ion-button small item-right (click)="goToPage(currentPage + 1)">Next</button>
 
