@@ -1,7 +1,10 @@
+import { ProfilePage } from './../profile/profile';
+import { AuthProvider } from './../../providers/auth/auth';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { GamesService } from '../../app/services/hymndb.service';
 import { DetailsPage } from '../details/details';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'games',
@@ -10,12 +13,15 @@ import { DetailsPage } from '../details/details';
 export class GamesPage {
   items: any;
 
-  constructor(public navCtrl: NavController, private gamesService: GamesService) {
+  constructor(public navCtrl: NavController, private gamesService: GamesService, private auth: AuthProvider) {
 
   }
 
   ngOnInit() {
-    this.getGames();
+    if(this.auth.isLogged()) {
+      this.getGames();
+    }
+    
   }
 
   getGames() {
@@ -28,6 +34,10 @@ export class GamesPage {
     this.navCtrl.push(DetailsPage, {
       item: item
     });
+  }
+
+  goToProfile() {
+    this.navCtrl.push(ProfilePage);
   }
 
 }

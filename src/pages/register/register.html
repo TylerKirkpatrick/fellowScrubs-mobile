@@ -10,17 +10,17 @@
     <form #FormRegister="ngForm" (ngSubmit)="Register(FormRegister)">
         <ion-item>
             <ion-label floating>Email</ion-label>
-            <ion-input type="text" name="email" [(ngModel)]="FormRegister.email" required></ion-input>
+            <ion-input type="text" name="email" ngModel required></ion-input>
         </ion-item>
 
         <ion-item>
             <ion-label floating>Username</ion-label>
-            <ion-input type="text" name="username" [(ngModel)]="FormRegister.username" required></ion-input>
+            <ion-input type="text" name="username" ngModel required></ion-input>
         </ion-item>
 
         <ion-item>
             <ion-label floating>Password</ion-label>
-            <ion-input type="password" name="password" [(ngModel)]="FormRegister.password" required></ion-input>
+            <ion-input type="password" name="password" ngModel required></ion-input>
         </ion-item>
 
         <ion-item>

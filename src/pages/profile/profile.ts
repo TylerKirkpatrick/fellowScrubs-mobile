@@ -1,8 +1,10 @@
+import { LoginPage } from './../login/login';
+import { TabsPage } from './../tabs/tabs';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { MomentModule } from 'angular2-moment';
-import { LoginPage } from '../login/login';
+import { GamesPage } from '../games/games';
 
 /**
  * Generated class for the ProfilePage page.
@@ -21,13 +23,17 @@ export class ProfilePage {
   myDate: Date;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthProvider) {
-    this.auth.getProfile().subscribe(data => {
+    try {
+      this.auth.getProfile().subscribe(data => {
       console.log("profile: ", data);
       this.profile = data.user;
 
       this.myDate = new Date(this.profile.created);
     
     });
+    } catch(e) {
+      console.log("ERROR");
+    }
   }
 
   ionViewDidLoad() {
@@ -36,7 +42,7 @@ export class ProfilePage {
 
   logout() {
     this.auth.logout();
-    this.navCtrl.push(LoginPage);
+    this.navCtrl.setRoot(LoginPage);
   }
 
 }

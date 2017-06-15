@@ -1,7 +1,7 @@
+import { TabsPage } from './../tabs/tabs';
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
-import { TabsPage } from '../tabs/tabs';
 import { LoginPage } from '../login/login';
 
 /*
@@ -16,7 +16,7 @@ https://auth0.com/blog/ionic-2-authentication-how-to-secure-your-mobile-app-with
 export class RegisterPage {
 
 	email:any;
-  username: any;
+  	username: any;
 	password:any;
 
 	constructor(
@@ -28,7 +28,7 @@ export class RegisterPage {
 	Register(FormRegister) {
 		this.auth.register(FormRegister.value).subscribe(data => {
 			if(data.success == true) {
-				this.navCtrl.setRoot(LoginPage);
+				this.navCtrl.setRoot(TabsPage);
 			} else {
 				FormRegister.password = '';
 				let alert = this.alertCtrl.create({

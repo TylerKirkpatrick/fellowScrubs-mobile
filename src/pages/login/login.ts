@@ -10,8 +10,9 @@ import { RegisterPage } from '../register/register';
 })
 export class LoginPage {
 
-	username:any;
-	password:any;
+	username: any;
+	password: any;
+	
 
 	constructor(
 		public navCtrl: NavController, 
@@ -19,13 +20,14 @@ export class LoginPage {
 		public alertCtrl: AlertController
 	) {}
 
-	login(FormLogin) {
+	login(FormLogin) {		
 		this.auth.login(FormLogin.value).subscribe(data => {
 			if(data.success == true) {
 				//console.log("setting username: ", FormLogin.username);
-				window.localStorage.setItem('username', FormLogin.username);
+				window.localStorage.setItem('username', FormLogin.value.username);
 				this.navCtrl.setRoot(TabsPage);
 			} else {
+				console.log("NOT SUCCESSFULL: ", data.success);
 				FormLogin.password = '';
 				let alert = this.alertCtrl.create({
 					title: 'Login failed, try registering as a new user',
@@ -34,7 +36,15 @@ export class LoginPage {
 				});
 				alert.present();
 			}
+		},
+		(err) => {
+			console.log("ERROR: ", err);
+		},
+
+		() => {
+			console.log("completed");
 		});
+		
 	}
 
 	goToRegister() {

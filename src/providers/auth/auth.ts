@@ -35,7 +35,7 @@ export class AuthProvider {
   }
 
   isLogged() {
-    if(window.localStorage.getItem('token')) {
+    if(window.localStorage.getItem('token') !== undefined && window.localStorage.getItem('token') !== "undefined") {
       return true;
     } else {
       return false;

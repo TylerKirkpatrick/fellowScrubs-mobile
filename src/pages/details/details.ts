@@ -1,3 +1,4 @@
+import { ProfilePage } from './../profile/profile';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { GamesService } from '../../app/services/hymndb.service';
@@ -113,6 +114,10 @@ export class DetailsPage {
 	toggleNewPost() {
 		this.showNewPostText = !this.showNewPostText;
 	}
+
+	goToProfile() {
+    	this.navCtrl.push(ProfilePage);
+  	}
 
 
 

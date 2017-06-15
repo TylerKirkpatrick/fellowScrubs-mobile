@@ -10,12 +10,12 @@
     <form #FormLogin="ngForm" (ngSubmit)="login(FormLogin)">
         <ion-item>
             <ion-label floating>Username</ion-label>
-            <ion-input type="text" name="username" [(ngModel)]="FormLogin.username" required></ion-input>
+            <ion-input type="text" name="username" ngModel required></ion-input>
         </ion-item>
 
         <ion-item>
             <ion-label floating>Password</ion-label>
-            <ion-input type="password" name="password" [(ngModel)]="FormLogin.password" required></ion-input>
+            <ion-input type="password" name="password" ngModel required></ion-input>
         </ion-item>
 
         <ion-item>
